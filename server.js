@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const { User } = require('./models');
+const { User, Hobby } = require('./models');
 
 const app = express();
 
@@ -74,12 +74,15 @@ app.put('/api/users/:userId', async (req, res) => {
 
 app.put('/api/users/addHobby/:userId', async (req,res) => {
     try {
+        const newHobby = await  Hobby.create(req.body)
+
+
         const user = await User.findByIdAndUpdate(
             req.params.userId,
             // delete all matching data from array
             {
                 $addToSet: {
-                    hobbies: req.body.hobby
+                    hobbyIds: newHobby._id,
                 }
             //     $pull: {
             //         hobbies: req.body.hobby,
