@@ -9,8 +9,10 @@ module.exports = [
             primaryWeapon: "Scar L",
             secondaryWeapon: 'H&K USP 45',
         },
-        hobbies: [
-            'Video Games', 'Weight Lifting',  'Going to the Park with my kids', 
+        hobbyIds: [
+            { hobby: 'Video Games'},
+            { hobby: 'Weight Lifting'},
+            { hobby: 'Going to the Park with my kids'}, 
         ]
     },
     {
@@ -23,8 +25,10 @@ module.exports = [
             primaryWeapon: 'Machete',
             secondaryWeapon: 'Sawnoff Shotgun',
         },
-        hobbies: [
-            'Watching TV', 'Eating', 'Playing with the kids', 
+        hobbyIds: [
+            { hobby: 'Watching TV'},
+            { hobby: 'Eating'},
+            { hobyy: 'Playing with the kids'}, 
         ],
     },
     {
@@ -37,8 +41,10 @@ module.exports = [
             primaryWeapon: 'Stick',
             secondaryWeapon: 'Throwables',
         },
-        hobbies: [
-            'Climbing', 'Runing', 'Cars', 
+        hobbyIds: [
+            { hobby: 'Climbing' },
+            { hobby: 'Runing' },
+            { hobby: 'Cars'}, 
         ],
     },
     {
@@ -51,8 +57,10 @@ module.exports = [
             primaryWeapon: "Voice",
             secondaryWeapon: 'Spitup',
         },
-        hobbies: [
-            'Eating', 'Sleeping', 'Pooping', 
+        hobbyIds: [
+            { hobby: 'Eating'},
+            { hobby: 'Sleeping'},
+            { hobby: 'Pooping'}, 
         ]
     },
 ]

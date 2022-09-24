@@ -1,5 +1,11 @@
 const {Schema, model } = require('mongoose');
 
+// Virtuals are values that we can calculate based on the current document that we are looking at. these values are not saved to the Db but we can query for them when we receive the data
+
+const hobbySchema = new Schema({
+    hobby: String,
+});
+
 const userSchema = new Schema({
     firstName: String,
     lastName: {
@@ -28,13 +34,27 @@ const userSchema = new Schema({
             default: 'Baseball Bat',
         },
     },
-    hobbies: [
-        {
-            type: String,
-            default: [],
-        }
-    ],
+    hobbyIds: [hobbySchema]
+},{
+    timestamps: true,
+    toJSON: {
+        virtuals: true,
+    }
 });
 
 
-module.exports = model('User', userSchema)
+//virtual creation
+
+// making own queries attached to the model
+userSchema.statics.findByFirstName = async function(firstName) {
+    return await this.find({ firstName });
+};
+
+userSchema.methods.sayGreeting = function() {
+    console.log(`
+    Hello my name is ${this.firstName} ${this.lastName} and my weapons are ${this.weapons.primaryWeapon} and ${this.weapons.secondaryWeapon}
+    `);
+};
+
+
+module.exports = model('User', userSchema);

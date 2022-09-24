@@ -55,11 +55,36 @@ const seeder = async () => {
     //         path: 'createdById',
     //     }
     //    })
-       const foundTodos = await Todo.find().populate({
+       const foundTodos = await Todo.find(
+        {
+            $or: [
+                {
+                    userId: newUsers[1]._id,
+                },
+                {
+                    userId: newUsers[2]._id,
+                },
+                {
+                    todo: 'Finish Hella HW'
+                }
+            ]
+        }
+        // {
+        //     userId: {
+        //         $in: [
+        //             newUsers[1]._id, newUsers[0]._id
+        //         ]
+        //     }
+        // }
+       ).populate({
         path: 'userId',
         select: '-email -age',
-    })
-    console.log(foundTodos);
+    });
+    const vanessas = await User.findByFirstName('Vanessa');
+    // console.log(vanessas);
+    newUsers.forEach(user => {
+        user.sayGreeting();
+    });
     process.exit(0)
 };
 
